@@ -9,13 +9,12 @@ import Swiper from 'react-native-swiper';
 import { WebView } from 'react-native';
 
 export default class NewsScreen extends React.Component {
+
   full_article_request(url) {
-    debugger;
     this.props.navigation.navigate('FullArticleScreen', {url: url } );
   }
 
   render() {
-
     let news_data = [
       {
         news_title: "Fighter jets are flying!!",
@@ -71,15 +70,5 @@ export default class NewsScreen extends React.Component {
       </Swiper>
     )
 
-  }
-}
-
-export class MyWeb extends Component {
-  render() {
-    return (
-      <View style={{flex: 1,  backgroundColor: 'red'}}>
-      <Text>Sample asdaa</Text>
-      </View>
-    );
   }
 }
