@@ -3,7 +3,9 @@ import {
   Text,
   View,
   Button,
-  Image
+  Image,
+  Share,
+  TouchableOpacity
 } from 'react-native';
 import Swiper from 'react-native-swiper';
 import { WebView } from 'react-native';
@@ -12,6 +14,19 @@ export default class NewsScreen extends React.Component {
 
   full_article_request(url) {
     this.props.navigation.navigate('FullArticleScreen', {url: url } );
+  }
+
+  shareArticle(news_data) {
+    Share.share({
+      message: news_data.news_content + "   Shared via NanoNews. Get the app now: www.playstore.com/apps/nanonews",
+    }, {
+      dialogTitle: "Share the news",
+      tintColor: "skyblue"
+    })
+    .then(() => {
+      console.log("Success");
+    })
+    .catch(err => console.log(err))
   }
 
   render() {
@@ -39,6 +54,9 @@ export default class NewsScreen extends React.Component {
     var news_screens = news_data.map((data, index) => {
         return(
           <View key={index} style={{flex: 1}}>
+          <TouchableOpacity style={{position: 'absolute', top: 0, right: 0, zIndex: 10000}} onPress={this.shareArticle.bind(this, data)}>
+            <Image style={{width: 50, height: 50, opacity: 0.8}} source={require('./assets/images/share_img_5.png')} />
+          </TouchableOpacity>
             <View style={{flex: 4}}>
               <Image
               style={{flex: 1}}

@@ -12,18 +12,8 @@ import NewsScreen from './app/NewsScreen';
 import WebViewComp from './app/WebViewComp'
 
 class WelcomeScreen extends Component {
-
   constructor(props) {
     super(props);
-    this.state = {
-      politics: false,
-      sports: false,
-      business: false,
-      life: false,
-      science: false,
-      money: false,
-      trade: false
-    }
   }
 
   topic_chosen(topic) {
@@ -67,6 +57,7 @@ class WelcomeScreen extends Component {
   }
 }
 
+//Navigation info. Using StackNavigator and nesting them for screens.
 const NestedNewsArticleStack = StackNavigator({
   NewsScreen: {
     screen: NewsScreen,
@@ -106,11 +97,6 @@ const NanoNews = StackNavigator({
         }
       }
    },
-
-});
-
-const styles = StyleSheet.create({
-
 });
 
 AppRegistry.registerComponent('NanoNews', () => NanoNews);

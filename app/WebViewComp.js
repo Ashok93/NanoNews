@@ -9,7 +9,6 @@ import {
 
 export default class WebViewComp extends React.Component {
   render() {
-      debugger;
       return (
         <WebView
           source={ {uri: this.props.navigation.state.params.url  } }
